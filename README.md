@@ -2,7 +2,7 @@
 
 Portfolio personal desarrollado para presentar mi experiencia, proyectos y tecnologías como **Full Stack Developer**.
 
-**Portfolio:** https://porfolio.dev/
+**Portfolio:**
 
 ---
 
