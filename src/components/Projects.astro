@@ -1,0 +1,226 @@
+---
+import GitHub from "./icons/GitHub.astro";
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import JavaScript from "./icons/JavaScript.astro";
+import CSharp from "./icons/Csharp.astro";
+import React from "./icons/React.astro";
+import NodeJS from "./icons/NodeJS.astro";
+import Express from "./icons/Express.astro";
+import MySQL from "./icons/MySQL.astro";
+import SocketIO from "./icons/SocketIO.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
+import SQLserver from "./icons/SQLserver.astro";
+
+const TAGS = {
+  JS: {
+    id: "javascript",
+    name: "JavaScript",
+    class: "bg-[#c3b017] text-bg text-black",
+    icon: JavaScript,
+  },
+  NEXT: {
+    id: "nextjs",
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  CSHARP: {
+    id: "csharp",
+    name: "C#",
+    class: "bg-[#68217a] text-white",
+    icon: CSharp,
+  },
+  SQLSERVER: {
+    id: "sqlserver",
+    name: "SQL Server",
+    class: "bg-[#981f1e] text-white",
+    icon: SQLserver,
+  },
+  REACT: {
+    id: "react",
+    name: "React",
+    class: "bg-[#087ea4] text-white",
+    icon: React,
+  },
+
+  NODE: {
+    id: "nodejs",
+    name: "Node.js",
+    class: "bg-[#3c873a] text-white",
+    icon: NodeJS,
+  },
+
+  EXPRESS: {
+    id: "express",
+    name: "Express",
+    class: "bg-black text-white",
+    icon: Express,
+  },
+
+  MYSQL: {
+    id: "mysql",
+    name: "MySQL",
+    class: "bg-[#00758f] text-white",
+    icon: MySQL,
+  },
+
+  SOCKETIO: {
+    id: "socketio",
+    name: "Socket.IO",
+    class: "bg-black text-white",
+    icon: SocketIO,
+  },
+
+  BOOTSTRAP: {
+    id: "bootstrap",
+    name: "Bootstrap",
+    class: "bg-[#7952b3] text-white",
+    icon: Bootstrap,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Café Nebaro",
+    description: `
+    Sitio web desarrollado para un café local utilizando
+    <strong>JavaScript y Tailwind CSS</strong>, con una interfaz responsive
+    para presentar su menú y facilitar el acceso a sus redes sociales.
+  `,
+    link: "https://nebarocafe.com",
+    github: "https://github.com/MvDrMr/nebaro_front",
+    image: "/projects/cafeNebaro.webp",
+    tags: [TAGS.JS, TAGS.TAILWIND],
+    technologies: ["javascript", "tailwind"],
+  },
+  {
+    title: "Energym",
+    description: `
+    Sistema de escritorio desarrollado con
+    <strong>C# y Windows Forms</strong> para la gestión de usuarios y
+    control de acceso de un gimnasio.
+  `,
+    link: "",
+    github: "https://github.com/MvDrMr/Energym_sistema",
+    image: "/projects/energym.webp",
+    tags: [TAGS.CSHARP, TAGS.SQLSERVER],
+    technologies: ["csharp", "windows-forms", "sql-server"],
+  },
+  {
+    title: "Spirit",
+    description: `
+      Sistema empresarial desarrollado con
+      <strong>React, Node.js, Express y MySQL</strong> para la gestión de
+      inventario, traslados entre sucursales, vehículos y recursos humanos.
+      Participé en el desarrollo de módulos funcionales y en la implementación
+      de actualizaciones en tiempo real mediante <strong>Socket.IO</strong>.
+    `,
+    link: "",
+    github: "",
+    image: "/projects/spirit.webp",
+    tags: [
+      TAGS.REACT,
+      TAGS.JS,
+      TAGS.NODE,
+      TAGS.EXPRESS,
+      TAGS.MYSQL,
+      TAGS.SOCKETIO,
+      TAGS.BOOTSTRAP,
+    ],
+    profiles: ["web", "backend", "fullstack"],
+    technologies: [
+      "react",
+      "javascript",
+      "node",
+      "express",
+      "mysql",
+      "socketio",
+      "bootstrap",
+    ],
+  },
+];
+---
+
+<div class="flex flex-col gap-y-16 mt-2">
+  {
+    PROJECTS.map(
+      ({
+        image,
+        title,
+        description,
+        tags,
+        link,
+        github,
+        profiles = [],
+        technologies = [],
+      }) => (
+        <article
+          data-project
+          data-profiles={profiles.join(",")}
+          data-technologies={technologies.join(",")}
+          class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
+        >
+          <div class="w-full md:w-1/2">
+            <div class="relative flex items-center justify-center overflow-hidden rounded-xl shadow-xl transition duration-500 ease-in-out md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img
+                alt="No se encontró la imagen"
+                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                loading="lazy"
+                src={image}
+              />
+            </div>
+          </div>
+
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-wrap mb-2 gap-2">
+                {tags.map((tag) => (
+                  <li>
+                    <span
+                      class={`flex w-fit items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                    >
+                      <tag.icon class="size-5 shrink-0" />
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                class="mt-2 text-gray-700 dark:text-gray-400 [&_strong]:font-semibold [&_strong]:text-green-400"
+                set:html={description}
+              />
+
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <LinkButton href={github}>
+                    <GitHub class="size-6" />
+                    Código
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={link}>
+                    <Link class="size-4" />
+                    Ver proyecto
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      ),
+    )
+  }
+</div>

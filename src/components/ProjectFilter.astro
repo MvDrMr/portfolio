@@ -1,0 +1,351 @@
+
+
+<div class="relative" id="project-filter">
+    <button
+        id="project-filter-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="project-filter-menu"
+        class="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:border-green-400 hover:text-green-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+    >
+        <span>Filtrar proyectos</span>
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-4 transition-transform duration-200"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            id="project-filter-icon"
+        >
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+    </button>
+
+    <div
+        id="project-filter-menu"
+        class="absolute left-0 z-50 mt-2 hidden w-72 rounded-xl border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-900"
+    >
+        <!-- Perfiles -->
+
+        <div>
+            <p
+                class="mb-3 text-sm font-semibold text-gray-800 dark:text-gray-100"
+            >
+                Perfiles
+            </p>
+
+            <div class="space-y-2">
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="web"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Desarrollo Web</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="dotnet"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>.NET</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="fullstack"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Full Stack</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="my-4 border-t border-gray-200 dark:border-gray-700"></div>
+
+        <!-- Tecnologías -->
+
+        <div>
+            <p
+                class="mb-3 text-sm font-semibold text-gray-800 dark:text-gray-100"
+            >
+                Tecnologías
+            </p>
+
+            <div class="max-h-64 space-y-1 overflow-y-auto pr-1">
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="html"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>HTML</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="css"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>CSS</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="javascript"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>JavaScript</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="react"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>React</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="nextjs"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Next.js</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="tailwind"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Tailwind CSS</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="node"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Node.js</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="csharp"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>C#</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="aspnet"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>ASP.NET</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="windows-forms"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>Windows Forms</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="mvc"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>MVC</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="sql-server"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>SQL Server</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="mysql"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>MySQL</span>
+                </label>
+
+                <label
+                    class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                    <input
+                        type="checkbox"
+                        value="postgresql"
+                        class="size-4 rounded border-gray-300 text-green-400 focus:ring-green-400"
+                    />
+                    <span>PostgreSQL</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const filter = document.querySelector("#project-filter");
+    const button = document.querySelector("#project-filter-button");
+    const menu = document.querySelector("#project-filter-menu");
+    const icon = document.querySelector("#project-filter-icon");
+
+    const projects = document.querySelectorAll("[data-project]");
+    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+        '#project-filter-menu input[type="checkbox"]',
+    );
+
+    if (filter && button && menu && icon) {
+        const toggleMenu = () => {
+            const isOpen = !menu.classList.contains("hidden");
+
+            menu.classList.toggle("hidden", isOpen);
+            button.setAttribute("aria-expanded", String(!isOpen));
+
+            icon.classList.toggle("rotate-180", !isOpen);
+        };
+
+        button.addEventListener("click", toggleMenu);
+
+        document.addEventListener("click", (event) => {
+            if (!filter.contains(event.target as Node)) {
+                menu.classList.add("hidden");
+                button.setAttribute("aria-expanded", "false");
+                icon.classList.remove("rotate-180");
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menu.classList.add("hidden");
+                button.setAttribute("aria-expanded", "false");
+                icon.classList.remove("rotate-180");
+            }
+        });
+    }
+
+    const PROFILE_TECHNOLOGIES: Record<string, string[]> = {
+        web: ["html", "css", "javascript", "react", "nextjs", "tailwind"],
+
+        dotnet: ["csharp", "aspnet", "windows-forms", "mvc", "sql-server"],
+
+        fullstack: [
+            "html",
+            "css",
+            "javascript",
+            "react",
+            "nextjs",
+            "tailwind",
+            "node",
+            "csharp",
+            "aspnet",
+            "sql-server",
+            "mysql",
+            "postgresql",
+        ],
+    };
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+            const selectedProfiles = Array.from(checkboxes)
+                .filter(
+                    (checkbox) =>
+                        checkbox.checked &&
+                        ["web", "dotnet", "fullstack"].includes(checkbox.value),
+                )
+                .map((checkbox) => checkbox.value);
+
+            const selectedTechnologies = Array.from(checkboxes)
+                .filter(
+                    (checkbox) =>
+                        checkbox.checked &&
+                        !["web", "dotnet", "fullstack"].includes(
+                            checkbox.value,
+                        ),
+                )
+                .map((checkbox) => checkbox.value);
+
+            const profileTechnologies = selectedProfiles.flatMap(
+                (profile) => PROFILE_TECHNOLOGIES[profile] ?? [],
+            );
+
+            const selectedFilters = [
+                ...selectedTechnologies,
+                ...profileTechnologies,
+            ];
+
+            projects.forEach((project) => {
+                const technologies =
+                    project.getAttribute("data-technologies")?.split(",") ?? [];
+
+                const matches =
+                    selectedFilters.length === 0 ||
+                    selectedFilters.some((technology) =>
+                        technologies.includes(technology),
+                    );
+
+                project.classList.toggle("hidden", !matches);
+            });
+        });
+    });
+</script>

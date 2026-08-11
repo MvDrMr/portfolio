@@ -1,0 +1,66 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCE = [
+  {
+    date: "Diciembre 2023 – Junio 2026",
+    title: "Desarrollo Web Full Stack",
+    company: "Spirit Computación S.A",
+    description: `Sistema empresarial desarrollado con <strong>React, Node.js, Express y MySQL</strong> para la 
+      gestión de operaciones, inventario, traslados entre sucursales, vehículos y recursos humanos. 
+      Participé en el desarrollo y mantenimiento de los módulos de <strong>Traslados, Vehículos, 
+      Recursos Humanos, Inventario y Kardex</strong>, incluyendo actualizaciones en tiempo real 
+      mediante <strong>Socket.IO</strong>.
+    `,
+    link: "",
+  },
+  {
+    date: "Julio 2026 - Julio 2026",
+    title: "Proyecto Freelance",
+    company: "Café NEBARO",
+    description: `
+      Desarrollé y desplegué un sitio web para un café local utilizando
+      <strong>React, JavaScript y Tailwind CSS</strong>. Implementé una interfaz
+      responsive adaptada a distintos dispositivos y configuré el
+      <strong>despliegue del sitio y la administración del dominio</strong>.
+      Gestioné el código fuente y el desarrollo del proyecto mediante
+      <strong>Git/GitHub</strong>.
+    `,
+  },
+  {
+    date: "Diciembre 2024 - Abril 2025",
+    title: "Sistema de Gestión",
+    company: "Energym",
+    description: `
+      Proyecto desarrollado durante la <strong>Ingeniería en Sistemas</strong>
+      para la gestión de usuarios de un gimnasio. Construí una aplicación de
+      escritorio utilizando <strong>C#, Windows Forms y SQL Server</strong>,
+      aplicando principios de <strong>Programación Orientada a Objetos (POO)</strong>
+      y una arquitectura en <strong>N capas</strong>. Diseñé la base de datos y
+      elaboré la documentación técnica mediante <strong>Case Studio y UML</strong>.
+      Integré un <strong>dispositivo biométrico basado en Arduino</strong> para el
+      control de acceso de los usuarios.
+    `,
+  },
+  {
+    date: "Julio 2023 – Noviembre 2023",
+    title: "Sistema Mundo Conectado",
+    company: "Proyecto de Ingeniería en Sistemas",
+    description: `
+    Proyecto desarrollado durante la Ingeniería en Sistemas, en colaboración con un cliente real. 
+    Participé en el levantamiento y análisis de requerimientos y desarrollé una aplicación de escritorio utilizando <strong>C#, 
+    Windows Forms y SQL Server</strong>. Apliqué principios de <strong>Programación Orientada a Objetos (POO)</strong> y una arquitectura en <strong>N capas</strong>. 
+    Diseñé la base de datos y elaboré la documentación técnica utilizando <strong>Case Studio y StarUML</strong>.
+    `,
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
