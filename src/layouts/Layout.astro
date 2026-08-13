@@ -23,6 +23,41 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+
+    <title>{title}</title>
+    <ViewTransitions />
+
+    <script>
+      const VERSION_CHECK_INTERVAL = 45_000;
+
+      let currentVersion: string | null = null;
+
+      const checkVersion = async () => {
+        try {
+          const response = await fetch(`/version.json?t=${Date.now()}`, {
+            cache: "no-store",
+          });
+
+          if (!response.ok) return;
+
+          const data = await response.json();
+
+          if (!currentVersion) {
+            currentVersion = data.version;
+            return;
+          }
+
+          if (data.version !== currentVersion) {
+            window.location.reload();
+          }
+        } catch (error) {
+          console.warn("Could not check portfolio version:", error);
+        }
+      };
+
+      checkVersion();
+      setInterval(checkVersion, VERSION_CHECK_INTERVAL);
+    </script>
   </head>
 
   <body class="relative text-black dark:text-white">
