@@ -24,13 +24,9 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
 
-    <title>{title}</title>
-    <ViewTransitions />
-
     <script>
       const VERSION_CHECK_INTERVAL = 45_000;
-
-      let currentVersion: string | null = null;
+      const VERSION_STORAGE_KEY = "portfolio-version";
 
       const checkVersion = async () => {
         try {
@@ -41,13 +37,15 @@ const { description, title } = Astro.props;
           if (!response.ok) return;
 
           const data = await response.json();
+          const currentVersion = sessionStorage.getItem(VERSION_STORAGE_KEY);
 
           if (!currentVersion) {
-            currentVersion = data.version;
+            sessionStorage.setItem(VERSION_STORAGE_KEY, data.version);
             return;
           }
 
           if (data.version !== currentVersion) {
+            sessionStorage.setItem(VERSION_STORAGE_KEY, data.version);
             window.location.reload();
           }
         } catch (error) {
