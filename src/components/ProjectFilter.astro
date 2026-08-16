@@ -1,4 +1,10 @@
+---
+interface Props {
+    initialProfile?: string;
+}
 
+const { initialProfile } = Astro.props;
+---
 
 <div class="relative" id="project-filter">
     <button
@@ -245,15 +251,20 @@
 </div>
 
 <script>
+    import { PROFILE_TECHNOLOGIES } from "./config/projectFilters";
+
     const filter = document.querySelector("#project-filter");
     const button = document.querySelector("#project-filter-button");
     const menu = document.querySelector("#project-filter-menu");
     const icon = document.querySelector("#project-filter-icon");
 
     const projects = document.querySelectorAll("[data-project]");
-    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+
+    const checkboxes = document.querySelectorAll(
         '#project-filter-menu input[type="checkbox"]',
     );
+
+    const initialProfile = filter?.getAttribute("data-initial-profile");
 
     if (filter && button && menu && icon) {
         const toggleMenu = () => {
@@ -268,7 +279,7 @@
         button.addEventListener("click", toggleMenu);
 
         document.addEventListener("click", (event) => {
-            if (!filter.contains(event.target as Node)) {
+            if (!filter.contains(event.target)) {
                 menu.classList.add("hidden");
                 button.setAttribute("aria-expanded", "false");
                 icon.classList.remove("rotate-180");
@@ -284,68 +295,58 @@
         });
     }
 
-    const PROFILE_TECHNOLOGIES: Record<string, string[]> = {
-        web: ["html", "css", "javascript", "react", "nextjs", "tailwind"],
+    const applyFilters = () => {
+        const selectedProfiles = Array.from(checkboxes)
+            .filter(
+                (checkbox) =>
+                    checkbox.checked &&
+                    ["web", "dotnet", "fullstack"].includes(checkbox.value),
+            )
+            .map((checkbox) => checkbox.value);
 
-        dotnet: ["csharp", "aspnet", "windows-forms", "mvc", "sql-server"],
+        const selectedTechnologies = Array.from(checkboxes)
+            .filter(
+                (checkbox) =>
+                    checkbox.checked &&
+                    !["web", "dotnet", "fullstack"].includes(checkbox.value),
+            )
+            .map((checkbox) => checkbox.value);
 
-        fullstack: [
-            "html",
-            "css",
-            "javascript",
-            "react",
-            "nextjs",
-            "tailwind",
-            "node",
-            "csharp",
-            "aspnet",
-            "sql-server",
-            "mysql",
-            "postgresql",
-        ],
+        const profileTechnologies = selectedProfiles.flatMap(
+            (profile) => PROFILE_TECHNOLOGIES[profile] ?? [],
+        );
+
+        const selectedFilters = [
+            ...selectedTechnologies,
+            ...profileTechnologies,
+        ];
+
+        projects.forEach((project) => {
+            const technologies =
+                project.getAttribute("data-technologies")?.split(",") ?? [];
+
+            const matches =
+                selectedFilters.length === 0 ||
+                selectedFilters.some((technology) =>
+                    technologies.includes(technology),
+                );
+
+            project.classList.toggle("hidden", !matches);
+        });
     };
 
     checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", () => {
-            const selectedProfiles = Array.from(checkboxes)
-                .filter(
-                    (checkbox) =>
-                        checkbox.checked &&
-                        ["web", "dotnet", "fullstack"].includes(checkbox.value),
-                )
-                .map((checkbox) => checkbox.value);
-
-            const selectedTechnologies = Array.from(checkboxes)
-                .filter(
-                    (checkbox) =>
-                        checkbox.checked &&
-                        !["web", "dotnet", "fullstack"].includes(
-                            checkbox.value,
-                        ),
-                )
-                .map((checkbox) => checkbox.value);
-
-            const profileTechnologies = selectedProfiles.flatMap(
-                (profile) => PROFILE_TECHNOLOGIES[profile] ?? [],
-            );
-
-            const selectedFilters = [
-                ...selectedTechnologies,
-                ...profileTechnologies,
-            ];
-
-            projects.forEach((project) => {
-                const technologies =
-                    project.getAttribute("data-technologies")?.split(",") ?? [];
-
-                const matches =
-                    selectedFilters.length === 0 ||
-                    selectedFilters.some((technology) =>
-                        technologies.includes(technology),
-                    );
-
-                project.classList.toggle("hidden", !matches);
-            });
-        });
+        checkbox.addEventListener("change", applyFilters);
     });
+
+    if (initialProfile) {
+        const profileCheckbox = Array.from(checkboxes).find(
+            (checkbox) => checkbox.value === initialProfile,
+        );
+
+        if (profileCheckbox) {
+            profileCheckbox.checked = true;
+            applyFilters();
+        }
+    }
 </script>
