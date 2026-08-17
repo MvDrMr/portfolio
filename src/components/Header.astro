@@ -1,35 +1,50 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
+import ThemeToggle from "./ThemeToggle.astro";
+import { getTranslations, type Language } from "@/config/translations";
+
+const pathname = Astro.url.pathname;
+
+const language: Language = pathname.startsWith("/en") ? "en" : "es";
+const t = getTranslations(language);
+
+const basePath = language === "en" ? "/en" : "";
 
 const navItems = [
   {
-    title: "Experiencia",
+    title: t.navigation.experience,
     label: "experiencia",
-    url: "/#experiencia",
+    url: `${basePath}/#experiencia`,
   },
   {
-    title: "Proyectos",
+    title: t.navigation.projects,
     label: "proyectos",
-    url: "/#proyectos",
+    url: `${basePath}/#proyectos`,
   },
   {
-    title: "Sobre mí",
+    title: t.navigation.about,
     label: "sobre-mi",
-    url: "/#sobre-mi",
+    url: `${basePath}/#sobre-mi`,
   },
   {
-    title: "Contacto",
+    title: t.navigation.contact,
     label: "contacto",
-    url: "mailto:gmail@gmail.com",
+    url: "mailto:marvingussi96@gmail.com?subject=Contacto%20desde%20mi%20portfolio",
   },
-]
+];
+
+const languageUrl =
+  language === "es"
+    ? `/en${pathname === "/" ? "" : pathname}`
+    : pathname.replace(/^\/en/, "") || "/";
+
+const languageLabel = language === "es" ? "EN" : "ES";
 ---
 
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex items-center justify-center px-3 text-sm font-medium text-gray-600 rounded-full dark:text-gray-200"
   >
     {
       navItems.map((link) => (
@@ -42,50 +57,58 @@ const navItems = [
         </a>
       ))
     }
+
+    <a
+      href={languageUrl}
+      class="relative block px-2 py-2 transition hover:text-green-400 dark:hover:text-green-400"
+      aria-label={`Cambiar idioma a ${languageLabel}`}
+    >
+      {languageLabel}
+    </a>
+    
     <ThemeToggle />
   </nav>
 </header>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
-    const callback = (entries: any[]) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-green-400")
+            if (item.getAttribute("aria-label") === entry.target.id) {
+              item.classList.add("text-green-400");
             } else {
-              item.classList.remove("text-green-400")
+              item.classList.remove("text-green-400");
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
       threshold: 0.3,
-    })
+    });
 
     sections.forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
-    // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        observer.disconnect();
       } else {
         sections.forEach((section) => {
-          observer.observe(section)
-        })
+          observer.observe(section);
+        });
       }
-    }
-  })
+    };
+  });
 </script>
 
 <style>

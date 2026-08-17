@@ -13,6 +13,11 @@ import MySQL from "./icons/MySQL.astro";
 import SocketIO from "./icons/SocketIO.astro";
 import Bootstrap from "./icons/Bootstrap.astro";
 import SQLserver from "./icons/SQLserver.astro";
+import { getTranslations, type Language } from "@/config/translations";
+
+const language: Language = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+
+const t = getTranslations(language);
 
 const TAGS = {
   JS: {
@@ -91,11 +96,7 @@ const TAGS = {
 const PROJECTS = [
   {
     title: "Café Nebaro",
-    description: `
-    Sitio web desarrollado para un café local utilizando
-    <strong>JavaScript y Tailwind CSS</strong>, con una interfaz responsive
-    para presentar su menú y facilitar el acceso a sus redes sociales.
-  `,
+    description: t.projects.items.cafeNebaro.description,
     link: "https://nebarocafe.com",
     github: "https://github.com/MvDrMr/nebaro_front",
     image: "/projects/cafeNebaro.webp",
@@ -104,11 +105,7 @@ const PROJECTS = [
   },
   {
     title: "Energym",
-    description: `
-    Sistema de escritorio desarrollado con
-    <strong>C# y Windows Forms</strong> para la gestión de usuarios y
-    control de acceso de un gimnasio.
-  `,
+    description: t.projects.items.energym.description,
     link: "",
     github: "https://github.com/MvDrMr/Energym_sistema",
     image: "/projects/energym.webp",
@@ -117,13 +114,7 @@ const PROJECTS = [
   },
   {
     title: "Spirit",
-    description: `
-      Sistema empresarial desarrollado con
-      <strong>React, Node.js, Express y MySQL</strong> para la gestión de
-      inventario, traslados entre sucursales, vehículos y recursos humanos.
-      Participé en el desarrollo de módulos funcionales y en la implementación
-      de actualizaciones en tiempo real mediante <strong>Socket.IO</strong>.
-    `,
+    description: t.projects.items.spirit.description,
     link: "",
     github: "",
     image: "/projects/spirit.webp",
@@ -207,13 +198,13 @@ const PROJECTS = [
                 {github && (
                   <LinkButton href={github}>
                     <GitHub class="size-6" />
-                    Código
+                    {t.projects.code}
                   </LinkButton>
                 )}
                 {link && (
                   <LinkButton href={link}>
                     <Link class="size-4" />
-                    Ver proyecto
+                    {t.projects.viewProject}
                   </LinkButton>
                 )}
               </footer>

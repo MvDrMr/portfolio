@@ -11,12 +11,24 @@ import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
 import ProjectFilter from "@/components/ProjectFilter.astro";
-import { getTranslations } from "@/config/translations";
+import { getTranslations, type Language } from "@/config/translations";
 
-const t = getTranslations("es");
+export function getStaticPaths() {
+  return [
+    {
+      params: { lang: "en" },
+      props: {
+        language: "en" as Language,
+      },
+    },
+  ];
+}
+
+const { language } = Astro.props;
+const t = getTranslations(language);
 ---
 
-<Layout title={t.seo.title} description={t.seo.description} language="es">
+<Layout title={t.seo.title} description={t.seo.description} language={language}>
   <main class="px-4">
     <SectionContainer class="py-16 md:py-36">
       <Hero />

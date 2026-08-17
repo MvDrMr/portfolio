@@ -1,4 +1,12 @@
 ---
+import { getTranslations, type Language } from "@/config/translations";
+
+const language: Language = Astro.url.pathname.startsWith("/en")
+  ? "en"
+  : "es";
+
+const t = getTranslations(language);
+
 const personalImageAlt = "Marvin Rodas";
 ---
 
@@ -8,15 +16,7 @@ const personalImageAlt = "Marvin Rodas";
   <div
     class="[&>p]:mb-4 [&>p>strong]:text-green-500 dark:[&>p>strong]:text-green-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
   >
-    <p>
-      Me llamo Marvin Rodas, aunque mis amigos me llaman Marv. Comencé a
-      programar a los 16 años y desde entonces he desarrollado proyectos tanto
-      académicos como profesionales. Actualmente me desempeño como Desarrollador
-      Full Stack, trabajando principalmente con tecnologías del ecosistema
-      JavaScript y .NET. Me interesa especialmente el desarrollo de
-      aplicaciones, el diseño de bases de datos y la construcción de soluciones
-      estructuradas y mantenibles.
-    </p>
+    <p>{t.about.description}</p>
   </div>
 
   <img

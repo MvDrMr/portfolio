@@ -1,25 +1,30 @@
 ---
 import GitHub from "./icons/GitHub.astro";
 import LinkedIn from "./icons/LinkedIn.astro";
+import { getTranslations, type Language } from "@/config/translations";
 
 const currentYear = new Date().getFullYear();
 
+const language: Language = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+
+const t = getTranslations(language);
+
 const footerLinks = [
   {
-    title: "Sobre mí",
-    url: "/#sobre-mi",
+    title: t.footer.about,
+    url: `${language === "en" ? "/en" : ""}/#sobre-mi`,
   },
   {
-    title: "Experiencia",
-    url: "/#experiencia",
+    title: t.footer.experience,
+    url: `${language === "en" ? "/en" : ""}/#experiencia`,
   },
   {
-    title: "Proyectos",
-    url: "/#proyectos",
+    title: t.footer.projects,
+    url: `${language === "en" ? "/en" : ""}/#proyectos`,
   },
   {
-    title: "Contacto",
-    url: "/#contacto",
+    title: t.footer.contact,
+    url: `mailto:marvingussi96@gmail.com?subject=Contacto%20desde%20mi%20portfolio`,
   },
 ];
 ---
@@ -35,9 +40,8 @@ const footerLinks = [
       <span class="text-green-400">Marvin Gustavo Rodas Monzón</span>
     </div>
 
-    
     <nav
-      aria-label="Navegación del footer"
+      aria-label={t.footer.navigation}
       class="flex flex-wrap items-center gap-x-5 gap-y-2"
     >
       {

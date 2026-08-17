@@ -60,7 +60,7 @@ src/
 public/
 ├── projects/
 ├── marvinDev.webp
-└── porfolio.webp
+└── portfolio.webp
 ```
 
 ---

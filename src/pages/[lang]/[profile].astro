@@ -11,12 +11,35 @@ import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
 import ProjectFilter from "@/components/ProjectFilter.astro";
-import { getTranslations } from "@/config/translations";
+import { getTranslations, type Language } from "@/config/translations";
 
-const t = getTranslations("es");
+export function getStaticPaths() {
+  const languages: Language[] = ["es", "en"];
+
+  const profiles = ["web", "dotnet", "fullstack"];
+
+  return languages.flatMap((language) =>
+    profiles.map((profile) => ({
+      params: {
+        lang: language,
+        profile,
+      },
+      props: {
+        language,
+        initialProfile: profile,
+      },
+    })),
+  );
+}
+
+const { language, initialProfile } = Astro.props;
+const t = getTranslations(language);
+
+const profile = Astro.params.profile as "web" | "dotnet" | "fullstack";
+const seo = t.seo.profiles[profile];
 ---
 
-<Layout title={t.seo.title} description={t.seo.description} language="es">
+<Layout title={seo.title} description={seo.description} language={language}>
   <main class="px-4">
     <SectionContainer class="py-16 md:py-36">
       <Hero />
@@ -39,7 +62,7 @@ const t = getTranslations("es");
         {t.sections.projects}
       </TitleSection>
 
-      <ProjectFilter />
+      <ProjectFilter initialProfile={initialProfile} />
 
       <Projects />
     </SectionContainer>
