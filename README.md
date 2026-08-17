@@ -4,7 +4,7 @@ Portfolio personal desarrollado para presentar mi experiencia profesional, proye
 
 El proyecto cuenta con soporte para diferentes perfiles profesionales, idiomas y versiones de CV, permitiendo adaptar el contenido del portfolio según el tipo de desarrollo que se quiera destacar.
 
-**Portfolio:** https://porfolio.dev/
+**Portfolio:** [marvin-portfolio.com/en](https://marvin-portfolio.com/en/)
 
 ---
 
@@ -335,7 +335,7 @@ Full Stack Developer interesado en el desarrollo de aplicaciones web, arquitectu
 
 * GitHub: https://github.com/MvDrMr
 * LinkedIn: https://www.linkedin.com/in/marvin-gustavo-rodas-monzón-737583254/
-* Portfolio: marvin-portfolio.com/en
+* Portfolio: [marvin-portfolio.com/en](https://marvin-portfolio.com/en/)
 
 ---
 
